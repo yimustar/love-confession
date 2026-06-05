@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap');
+
+:root {
+    --primary: #ff6b9d;
+    --secondary: #c44569;
+    --gold: #ffeaa7;
+    --bg: #1a0a2e;
+    --bg-light: #2d132c;
+    --text: #ffffff;
+    --text-muted: rgba(255, 255, 255, 0.7);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Serif SC', 'Microsoft YaHei', serif;
+    background: linear-gradient(135deg, var(--bg) 0%, var(--bg-light) 100%);
+    color: var(--text);
+    overflow-x: hidden;
+    line-height: 1.8;
+    min-height: 100vh;
+}
+
+/* 花瓣飘落 */
+#petals-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.petal {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: 50% 0 50% 50%;
+    opacity: 0.6;
+    animation: petalFall linear infinite;
+}
+
+@keyframes petalFall {
+    0% {
+        transform: translateY(-10vh) rotate(0deg) scale(0.5);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(110vh) rotate(720deg) scale(1);
+        opacity: 0;
+    }
+}
+
+/* 星光 */
+.star {
+    position: fixed;
+    width: 2px;
+    height: 2px;
+    background: var(--gold);
+    border-radius: 50%;
+    animation: twinkle 3s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 1; }
+}
+
+/* 导航栏 */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    background: rgba(26, 10, 46, 0.6);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 107, 157, 0.1);
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--gold);
+    text-decoration: none;
+    letter-spacing: 3px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+    letter-spacing: 2px;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: linear-gradient(90deg, var(--primary), var(--gold));
+    transition: width 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--gold);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* 按钮 */
+.btn {
+    padding: 15px 40px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    font-family: inherit;
+    display: inline-block;
+    letter-spacing: 3px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(255, 107, 157, 0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(255, 107, 157, 0.6);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+}
+
+.btn-outline:hover {
+    background: var(--gold);
+    color: var(--bg);
+    transform: translateY(-3px);
+}
+
+/* 卡片 */
+.card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 107, 157, 0.1);
+    transition: all 0.4s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 107, 157, 0.3);
+    box-shadow: 0 15px 40px rgba(255, 107, 157, 0.2);
+}
+
+/* 标题 */
+.section-title {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 50px;
+    color: var(--gold);
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+    letter-spacing: 5px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary), var(--gold));
+}
+
+/* 装饰线 */
+.divider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--primary), var(--gold));
+    margin: 30px auto;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    nav {
+        padding: 20px;
+    }
+
+    .section-title {
+        font-size: 28px;
+    }
+}
