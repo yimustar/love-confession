@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于未来</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .future-hero {
+            padding: 150px 50px 60px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .future-hero h1 {
+            font-size: clamp(32px, 5vw, 48px);
+            color: var(--gold);
+            letter-spacing: 8px;
+        }
+
+        .future-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 50px 80px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .dream-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .dream-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            border: 1px solid rgba(255, 107, 157, 0.1);
+            transition: all 0.4s;
+        }
+
+        .dream-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 107, 157, 0.3);
+            box-shadow: 0 15px 40px rgba(255, 107, 157, 0.15);
+        }
+
+        .dream-card .emoji {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .dream-card h3 {
+            font-size: 20px;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        .dream-card p {
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .promise-section {
+            padding: 80px 50px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .promise-box {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 50px;
+            border: 1px solid rgba(255, 107, 157, 0.15);
+        }
+
+        .promise-box h3 {
+            font-size: 24px;
+            color: var(--gold);
+            margin-bottom: 30px;
+            letter-spacing: 3px;
+        }
+
+        .promise-list {
+            text-align: left;
+            list-style: none;
+        }
+
+        .promise-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 107, 157, 0.1);
+            color: var(--text-muted);
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .promise-list li:last-child {
+            border-bottom: none;
+        }
+
+        .promise-list li span {
+            font-size: 24px;
+        }
+
+        .countdown-section {
+            padding: 60px 50px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .countdown-box {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px 40px;
+            border: 1px solid rgba(255, 107, 157, 0.2);
+        }
+
+        .countdown-item .number {
+            font-size: 48px;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .countdown-item .label {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-top: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .future-content {
+                padding: 0 20px 50px;
+            }
+
+            .countdown-item {
+                padding: 20px 30px;
+            }
+
+            .countdown-item .number {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="petals-container"></div>
+
+    <nav>
+        <a href="index.html" class="logo">LOVE</a>
+        <ul class="nav-links">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="story.html">我们的故事</a></li>
+            <li><a href="love.html">心里话</a></li>
+            <li><a href="future.html">未来</a></li>
+            <li><a href="answer.html">你的答案</a></li>
+        </ul>
+    </nav>
+
+    <section class="future-hero">
+        <h1>关于未来</h1>
+        <p style="color: var(--text-muted); margin-top: 15px;">我设想过无数种未来，每一种都有你。</p>
+        <div class="divider"></div>
+    </section>
+
+    <div class="future-content">
+        <h2 class="section-title">想和你一起</h2>
+        <div class="dream-grid">
+            <div class="dream-card">
+                <div class="emoji">🌅</div>
+                <h3>看日出日落</h3>
+                <p>在每一个清晨醒来，看到你就在我身边。在每一个黄昏，牵着你的手看夕阳西下。</p>
+            </div>
+            <div class="dream-card">
+                <div class="emoji">✈️</div>
+                <h3>环游世界</h3>
+                <p>带你去所有你想去的地方，看遍世间美景，在世界的每一个角落留下我们的足迹。</p>
+            </div>
+            <div class="dream-card">
+                <div class="emoji">🏠</div>
+                <h3>共建小家</h3>
+                <p>一起布置我们的家，每一个角落都充满爱的气息。在厨房里一起做饭，在沙发上一起看电影。</p>
+            </div>
+            <div class="dream-card">
+                <div class="emoji">👫</div>
+                <h3>相互陪伴</h3>
+                <p>开心时一起笑，难过时一起扛。无论顺境逆境，都不离不弃，相互扶持。</p>
+            </div>
+            <div class="dream-card">
+                <div class="emoji">🌱</div>
+                <h3>共同成长</h3>
+                <p>一起成为更好的人，互相鼓励，互相成就。让彼此成为生命中最美好的礼物。</p>
+            </div>
+            <div class="dream-card">
+                <div class="emoji">🌟</div>
+                <h3>实现梦想</h3>
+                <p>支持你的每一个梦想，陪你一起奋斗。让我们的生活充满意义和光芒。</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="promise-section">
+        <h2 class="section-title">我的承诺</h2>
+        <div class="promise-box">
+            <h3>💌 我对你的承诺</h3>
+            <ul class="promise-list">
+                <li><span>🤝</span> 永远忠诚于你，心里只有你一个人</li>
+                <li><span>💪</span> 在你需要的时候，永远陪在你身边</li>
+                <li><span>😊</span> 努力让你开心，做你快乐的源泉</li>
+                <li><span>🎁</span> 记住每一个重要的日子，给你惊喜</li>
+                <li><span>🌹</span> 珍惜你、爱护你，让你感受到被爱</li>
+                <li><span>🤗</span> 包容你的小脾气，理解你的小情绪</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="countdown-section">
+        <h2 class="section-title">等待你的答案</h2>
+        <div class="countdown-box">
+            <div class="countdown-item">
+                <div class="number" id="days">00</div>
+                <div class="label">天</div>
+            </div>
+            <div class="countdown-item">
+                <div class="number" id="hours">00</div>
+                <div class="label">时</div>
+            </div>
+            <div class="countdown-item">
+                <div class="number" id="minutes">00</div>
+                <div class="label">分</div>
+            </div>
+            <div class="countdown-item">
+                <div class="number" id="seconds">00</div>
+                <div class="label">秒</div>
+            </div>
+        </div>
+        <div style="text-align: center; padding: 40px 0;">
+            <a href="answer.html" class="btn btn-primary">你的答案 →</a>
+        </div>
+    </section>
+
+    <script>
+        const petalsContainer = document.getElementById('petals-container');
+        for (let i = 0; i < 25; i++) {
+            const petal = document.createElement('div');
+            petal.className = 'petal';
+            petal.style.left = Math.random() * 100 + 'vw';
+            petal.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            petal.style.animationDelay = Math.random() * 5 + 's';
+            petalsContainer.appendChild(petal);
+        }
+
+        // 倒计时
+        function updateCountdown() {
+            const now = new Date();
+            const target = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0);
+            const diff = target - now;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
