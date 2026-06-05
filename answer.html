@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>你的答案</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .answer-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .answer-page::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 107, 157, 0.2) 0%, transparent 70%);
+            z-index: -1;
+            animation: glow 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+            to { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+        }
+
+        .big-heart {
+            font-size: 100px;
+            margin-bottom: 30px;
+            animation: heartBeat 1.5s ease-in-out infinite;
+            filter: drop-shadow(0 0 30px rgba(255, 107, 157, 0.6));
+        }
+
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.15); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.15); }
+        }
+
+        .question {
+            font-size: clamp(24px, 5vw, 42px);
+            color: var(--gold);
+            margin-bottom: 20px;
+            letter-spacing: 5px;
+            line-height: 1.5;
+        }
+
+        .sub-question {
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 50px;
+        }
+
+        .answer-buttons {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-yes {
+            padding: 20px 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border: none;
+            border-radius: 50px;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            font-family: inherit;
+            letter-spacing: 5px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(255, 107, 157, 0.5);
+        }
+
+        .btn-yes:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 40px rgba(255, 107, 157, 0.7);
+        }
+
+        .result {
+            display: none;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .result.show {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .result h2 {
+            font-size: 36px;
+            color: var(--gold);
+            margin-bottom: 20px;
+            letter-spacing: 5px;
+        }
+
+        .result p {
+            font-size: 18px;
+            color: var(--text-muted);
+            line-height: 2;
+            max-width: 500px;
+            margin: 0 auto 30px;
+        }
+
+        .fireworks {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .firework {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            animation: explode 1s ease-out forwards;
+        }
+
+        @keyframes explode {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--tx), var(--ty)) scale(0);
+                opacity: 0;
+            }
+        }
+
+        .hearts-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 99;
+            overflow: hidden;
+        }
+
+        .falling-heart {
+            position: absolute;
+            font-size: 24px;
+            animation: fallHeart 3s linear forwards;
+        }
+
+        @keyframes fallHeart {
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="petals-container"></div>
+    <div class="fireworks" id="fireworks"></div>
+    <div class="hearts-rain" id="heartsRain"></div>
+
+    <nav>
+        <a href="index.html" class="logo">LOVE</a>
+        <ul class="nav-links">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="story.html">我们的故事</a></li>
+            <li><a href="love.html">心里话</a></li>
+            <li><a href="future.html">未来</a></li>
+            <li><a href="answer.html">你的答案</a></li>
+        </ul>
+    </nav>
+
+    <section class="answer-page">
+        <div id="question-area">
+            <div class="big-heart">💖</div>
+            <h1 class="question">你愿意做我的另一半吗？</h1>
+            <p class="sub-question">这是我人生中最重要的问题，等你的答案。</p>
+            <div class="answer-buttons">
+                <button class="btn-yes" onclick="sayYes()">我愿意 💕</button>
+            </div>
+        </div>
+
+        <div class="result" id="result">
+            <div class="big-heart">💍</div>
+            <h2>谢谢你！</h2>
+            <p>
+                这是我人生中最幸福的时刻。<br>
+                从今天起，我们就是彼此的人了。<br>
+                我会用一辈子来爱你、守护你。<br>
+                余生请多指教！
+            </p>
+            <div style="margin-top: 30px;">
+                <a href="index.html" class="btn btn-outline">回到首页</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const petalsContainer = document.getElementById('petals-container');
+        for (let i = 0; i < 30; i++) {
+            const petal = document.createElement('div');
+            petal.className = 'petal';
+            petal.style.left = Math.random() * 100 + 'vw';
+            petal.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            petal.style.animationDelay = Math.random() * 5 + 's';
+            petalsContainer.appendChild(petal);
+        }
+
+        function sayYes() {
+            document.getElementById('question-area').style.display = 'none';
+            document.getElementById('result').classList.add('show');
+            createFireworks();
+            createHeartsRain();
+        }
+
+        function createFireworks() {
+            const container = document.getElementById('fireworks');
+            const colors = ['#ff6b9d', '#c44569', '#ffeaa7', '#ff7675', '#fd79a8'];
+
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const x = Math.random() * window.innerWidth;
+                    const y = Math.random() * window.innerHeight * 0.5;
+                    const color = colors[Math.floor(Math.random() * colors.length)];
+
+                    for (let j = 0; j < 12; j++) {
+                        const particle = document.createElement('div');
+                        particle.className = 'firework';
+                        particle.style.left = x + 'px';
+                        particle.style.top = y + 'px';
+                        particle.style.background = color;
+                        const angle = (j / 12) * Math.PI * 2;
+                        const distance = 100 + Math.random() * 100;
+                        particle.style.setProperty('--tx', Math.cos(angle) * distance + 'px');
+                        particle.style.setProperty('--ty', Math.sin(angle) * distance + 'px');
+                        container.appendChild(particle);
+                        setTimeout(() => particle.remove(), 1000);
+                    }
+                }, i * 200);
+            }
+        }
+
+        function createHeartsRain() {
+            const container = document.getElementById('heartsRain');
+            const hearts = ['💕', '💖', '💗', '💓', '💝'];
+
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'falling-heart';
+                    heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                    container.appendChild(heart);
+                    setTimeout(() => heart.remove(), 4000);
+                }, i * 100);
+            }
+        }
+    </script>
+</body>
+</html>
